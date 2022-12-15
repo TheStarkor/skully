@@ -109,48 +109,89 @@ const Home = () => {
         <h3>세 부위 모두 업로드 할 시 정확도가 가장 높습니다.</h3>
 
 
-        {[
-          {
-            title: 'MASTOID',
-            onChange: handleMastoidChange
-          },
-          {
-            title: 'GLABELLA',
-            onChange: handleGlabellaChange
-          },
-          {
-            title: 'SUPRAORBITAL',
-            onChange: handleSupraorbitalChange
-          }
-        ].map(item => (
-          <Row>
-            <Col span={12}>
-              <img src={"https://tmi-image.s3.ap-northeast-2.amazonaws.com/profile/1655562218502skull-ear.png"} alt="avatar" style={{ width: "102px" }} />
-              <h3>{item.title}</h3>
-            </Col>
-            <Col span={12}>
-              <Upload
-                name="image"
-                listType="picture-card"
-                className="avatar-uploader"
-                showUploadList={false}
-                // TODO: API 변경
-                // action={
-                //   "https://f0fd-143-248-107-187.ngrok.io/uploads"
-                // }
-                onChange={item.onChange}
-              >
-                {mastoidUrl ? (
-                  <img src={mastoidUrl} alt="avatar" style={{ width: "100%" }} />
-                ) : (
-                  <div>
-                    <PlusOutlined style={{ color: "#00000050" }} />
-                  </div>
-                )}
-              </Upload>
-            </Col>
-          </Row>
-        ))}
+        <Row>
+          <Col span={12}>
+            <img src={"https://tmi-image.s3.ap-northeast-2.amazonaws.com/profile/1655562218502skull-ear.png"} alt="avatar" style={{ width: "102px" }} />
+            <h3>MASTOID</h3>
+          </Col>
+          <Col span={12}>
+            <Upload
+              name="image"
+              listType="picture-card"
+              className="avatar-uploader"
+              showUploadList={false}
+              action={
+                "https://api.onebob.co/uploads"
+              }
+              onChange={handleMastoidChange}
+            >
+              {mastoidUrl ? (
+                <img src={mastoidUrl} alt="avatar" style={{ width: "100%" }} />
+              ) : (
+                <div>
+                  <PlusOutlined style={{ color: "#00000050" }} />
+                </div>
+              )}
+            </Upload>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col span={12}>
+            <img src={"https://tmi-image.s3.ap-northeast-2.amazonaws.com/profile/1655562486949skull-eyeside.png"} alt="avatar" style={{ width: "102px" }} />
+            <h3>GLABELLA</h3>
+          </Col>
+          <Col span={12}>
+            <Upload
+              name="image"
+              listType="picture-card"
+              className="avatar-uploader"
+              showUploadList={false}
+              action={
+                "https://api.onebob.co/uploads"
+              }
+              onChange={handleGlabellaChange}
+            >
+              {glabellaUrl ? (
+                <>
+                  <img src={glabellaUrl} alt="avatar" style={{ width: "100%" }} />
+                </>
+              ) : (
+                <div>
+                  <PlusOutlined style={{ color: "#00000050" }} />
+                  {/* <div style={{ marginTop: 8 , color:'#ffffff'}}>Profile</div> */}
+                </div>
+              )}
+            </Upload>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col span={12}>
+            <img src={"https://tmi-image.s3.ap-northeast-2.amazonaws.com/profile/1655562473340skull-upview.png"} alt="avatar" style={{ width: "102px" }} />
+            <h3>SUPRAORBITAL</h3>
+          </Col>
+          <Col span={12}>
+            <Upload
+              name="image"
+              listType="picture-card"
+              className="avatar-uploader"
+              showUploadList={false}
+              action={
+                "https://api.onebob.co/uploads"
+              }
+              onChange={handleSupraorbitalChange}
+            >
+              {supraorbitalUrl ? (
+                <img src={supraorbitalUrl} alt="avatar" style={{ width: "100%" }} />
+              ) : (
+                <div>
+                  <PlusOutlined style={{ color: "#00000050" }} />
+                </div>
+              )}
+            </Upload>
+          </Col>
+        </Row>
 
         <Button type="primary" onClick={inference} style={{ marginTop: '10px', width: '200px' }} loading={isLoading}>
           성별 예측하기
