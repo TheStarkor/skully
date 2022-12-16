@@ -9,9 +9,13 @@
     "antd": "^4.21.0",
     "apexcharts": "^3.35.3",
     "axios": "^0.27.2",
+    "ify-loader": "^1.1.0",
+    "plotly.js": "^2.16.5",
+    "plotly.js-dist": "^2.16.5",
     "react": "^18.1.0",
     "react-apexcharts": "^1.4.0",
     "react-dom": "^18.1.0",
+    "react-plotly.js": "^2.6.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"

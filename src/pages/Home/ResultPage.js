@@ -1,11 +1,13 @@
-import { Button, Row, Upload } from "antd";
+import { Row, Upload } from "antd";
 import Chart from 'react-apexcharts'
+
+import "./index.css"
 
 const getOptions = (titleText) => ({
   chart: {
     type: 'bar',
-    height: 440,
-    width: 1000,
+    height: '50px' ,
+    width: '50px',
     stacked: true,
     toolbar: {
       show: false
@@ -73,8 +75,13 @@ const ResultPage = (props) => {
   console.log(getOptions(props.inferMessage))
   return (
     <>
+      <div className="skully_logo">
+        SKULLY
+      </div>
+    
+      
       <Chart options={getOptions(props.inferMessage)} series={props.series} type="bar" height={250} />
-
+{/* 
       {props.mastoidUrl &&
         <>
           <Row>
@@ -130,19 +137,17 @@ const ResultPage = (props) => {
           </Row>
           <h3>SUPRAORBITAL</h3>
         </>
-      }
+      } */}
 
-      <Row>
-        <Button type="primary" onClick={props.moveToHome} style={{ marginTop: '10px', width: '200px' }}>
+      {/* <h1>성별 추정이 필요한 머리뼈의 사진 세 장을 예시의 구도를 참고하여 촬영해 주세요</h1> */}
+
+        <button className="butBack" onClick={props.moveToHome}>
           뒤로가기
-        </Button>
-      </Row>
-
-      <Row>
-        <Button onClick={props.init} style={{ marginTop: '10px', width: '200px' }}>
+        </button>
+        <button onClick={props.init} className="butReset">
           처음으로
-        </Button>
-      </Row>
+        </button>
+      
     </>
   )
 }

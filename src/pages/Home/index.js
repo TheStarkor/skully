@@ -103,98 +103,100 @@ const Home = () => {
   const StartPage = () => {
     return (
       <>
-        <h1>아래 예시에 해당하는</h1>
-        <h1>이미지를 업로드해주세요</h1>
+        <div className="skully_logo">
+          SKULLY
+        </div>
+        <h1>성별 추정이 필요한 머리뼈의 사진 세 장을 예시의 구도를 참고하여 촬영해 주세요</h1>
 
-        <h3>세 부위 모두 업로드 할 시 정확도가 가장 높습니다.</h3>
-
-
-        <Row>
-          <Col span={12}>
-            <img src={"https://tmi-image.s3.ap-northeast-2.amazonaws.com/profile/1655562218502skull-ear.png"} alt="avatar" style={{ width: "102px" }} />
-            <h3>MASTOID</h3>
-          </Col>
-          <Col span={12}>
+        <div className="skullPart">
+          <div className="example">
+            <img className='eg' src="mastoid.png"/>
+            <label>MASTOID</label>
+          </div>
+          <div className="uploadUI">
             <Upload
-              name="image"
-              listType="picture-card"
-              className="avatar-uploader"
-              showUploadList={false}
-              action={
-                "https://api.onebob.co/uploads"
-              }
-              onChange={handleMastoidChange}
-            >
-              {mastoidUrl ? (
-                <img src={mastoidUrl} alt="avatar" style={{ width: "100%" }} />
-              ) : (
-                <div>
-                  <PlusOutlined style={{ color: "#00000050" }} />
-                </div>
-              )}
-            </Upload>
-          </Col>
-        </Row>
+                name="image"
+                listType="picture-card"
+                className="avatar-uploader"
+                showUploadList={false}
+                action={
+                  "https://api.onebob.co/uploads"
+                }
+                onChange={handleMastoidChange}
+              >
+                {mastoidUrl ? (
+                  <img className='uploaded' src={mastoidUrl} alt="avatar"/>
+                ) : (
+                  <div>
+                    <PlusOutlined/>
+                  </div>
+                )}
+              </Upload>
+          </div>
 
-        <Row>
-          <Col span={12}>
-            <img src={"https://tmi-image.s3.ap-northeast-2.amazonaws.com/profile/1655562486949skull-eyeside.png"} alt="avatar" style={{ width: "102px" }} />
-            <h3>GLABELLA</h3>
-          </Col>
-          <Col span={12}>
+        </div>
+            {/* <img src={"https://tmi-image.s3.ap-northeast-2.amazonaws.com/profile/1655562218502skull-ear.png"} alt="avatar" style={{ width: "102px" }} /> */}
+            
+            
+
+        <div className="skullPart">
+          <div className="example">
+          <img className="eg" src="glabella.png"/>
+            <label>GLABELLA</label>
+          </div>
+          <div className="uploadUI">
             <Upload
-              name="image"
-              listType="picture-card"
-              className="avatar-uploader"
-              showUploadList={false}
-              action={
-                "https://api.onebob.co/uploads"
-              }
-              onChange={handleGlabellaChange}
-            >
-              {glabellaUrl ? (
-                <>
-                  <img src={glabellaUrl} alt="avatar" style={{ width: "100%" }} />
-                </>
-              ) : (
-                <div>
-                  <PlusOutlined style={{ color: "#00000050" }} />
-                  {/* <div style={{ marginTop: 8 , color:'#ffffff'}}>Profile</div> */}
-                </div>
-              )}
-            </Upload>
-          </Col>
-        </Row>
+                name="image"
+                listType="picture-card"
+                className="avatar-uploader"
+                showUploadList={false}
+                action={
+                  "https://api.onebob.co/uploads"
+                }
+                onChange={handleGlabellaChange}
+              >
+                {glabellaUrl ? (
+                  <img className='uploaded' src={glabellaUrl} alt="avatar"/>
+                ) : (
+                  <div>
+                    <PlusOutlined  />
+                  </div>
+                )}
+              </Upload>
+          </div>
+        </div>
 
-        <Row>
-          <Col span={12}>
-            <img src={"https://tmi-image.s3.ap-northeast-2.amazonaws.com/profile/1655562473340skull-upview.png"} alt="avatar" style={{ width: "102px" }} />
-            <h3>SUPRAORBITAL</h3>
-          </Col>
-          <Col span={12}>
+
+
+        <div className="skullPart">
+          <div className="example">
+          <img className="eg" src="supraorbital.png"/>
+            <label>SUPRAORBITAL</label>
+          </div>
+          <div className="uploadUI">
             <Upload
-              name="image"
-              listType="picture-card"
-              className="avatar-uploader"
-              showUploadList={false}
-              action={
-                "https://api.onebob.co/uploads"
-              }
-              onChange={handleSupraorbitalChange}
-            >
-              {supraorbitalUrl ? (
-                <img src={supraorbitalUrl} alt="avatar" style={{ width: "100%" }} />
-              ) : (
-                <div>
-                  <PlusOutlined style={{ color: "#00000050" }} />
-                </div>
-              )}
-            </Upload>
-          </Col>
-        </Row>
+                name="image"
+                listType="picture-card"
+                className="avatar-uploader"
+                showUploadList={false}
+                action={
+                  "https://api.onebob.co/uploads"
+                }
+                onChange={handleSupraorbitalChange}
+              >
+                {supraorbitalUrl ? (
+                  <img className='uploaded' src={supraorbitalUrl} alt="avatar"/>
+                ) : (
+                  <div>
+                    <PlusOutlined  />
+                  </div>
+                )}
+              </Upload>
+          </div>
+        </div>
 
-        <Button type="primary" onClick={inference} style={{ marginTop: '10px', width: '200px' }} loading={isLoading}>
-          성별 예측하기
+        <Button type="primary" className="butPred" onClick={inference} loading={isLoading}>
+          성별 추정
         </Button>
       </>
     )

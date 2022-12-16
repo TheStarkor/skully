@@ -1,7 +1,14 @@
+@import url('https://fonts.cdnfonts.com/css/ocr-a-std');
+body, html {
+  background:black;
+}
+
 .home-container {
-  width:100%;
-  background: white;
-  padding:60px 10% 20px 10%;
+  margin:auto;
+  width:600px;
+  height:100vh;
+  background: linear-gradient(#1d5062, #232424);;
+  padding:40px 40px 40px 40px;
 
   display: flex;
   align-items: center;
@@ -9,9 +16,106 @@
 }
 
 h1 {
-  line-height: 20px;
+  line-height: 1.5em;
+  font-weight:300;
+  color:white;
 }
 h3 {
   font-size: 13px;
   text-align: center;
+}
+
+.skully_logo {
+  text-transform: uppercase;
+  font-size:32px;
+  letter-spacing: 16px;
+  color:white;
+  font-weight:300;
+  margin-bottom:12px;
+  font-family: 'OCR A Std', sans-serif;
+  text-shadow:0 0 4px rgb(56, 146, 255);
+}
+
+.skullPart { 
+  width:100%;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  gap:20px;
+  margin-top:12px;
+}
+
+.example {
+  flex:0 0 180px;
+  width:180px;
+}
+
+img.eg {
+  width:180px; height:180px;
+  border-radius:16px;
+}
+.example > label {
+  display:block;
+  width:100%; 
+  text-align:center; 
+  color:rgba(255,255,255,0.7); font-size:16px;
+  margin:0; padding:0;
+}
+
+.uploadUI { 
+  flex:0 0 180px;
+}
+
+img.uploaded {
+  width:180px; height:180px;
+  /* border-radius:16px; */
+  padding:12px; box-sizing:border-box;
+  object-fit:contain;
+}
+
+.ant-upload {
+  width:180px !important;
+  height:180px !important;
+  border-radius: 16px !important;
+  background:rgba(255,255,255,0.1) !important;
+  border:none !important;
+}
+.anticon {
+  font-size:40px !important;
+  color:white;
+}
+.anticon > svg {
+  background: rgba(0,0,0,0.2);
+  border-radius: 100%;
+  padding: 6px;
+  height: auto;
+  width: auto;
+}
+
+.butPred, .butBack, .butReset {
+  font-size:24px;
+  height:auto;
+  margin-top:12px;
+  border-radius: 8px;
+  padding:4px 40px;
+  background:#0a9cbb;
+  border:none;
+  color:white;
+  box-shadow:inset 0 0 0px 2px rgba(0,0,0,0.1);
+}
+
+.butReset {
+  background:#888888;
+}
+
+
+.apexcharts-title-text {
+  font-weight:300 !important;
+  fill:white !important;
+  font-size:21px !important;
+}
+
+.apexcharts-text.apexcharts-yaxis-label, .apexcharts-text.apexcharts-xaxis-label {
+  fill:white !important;
+  font-size:18px !important;
 }
