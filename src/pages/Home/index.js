@@ -46,16 +46,9 @@ const Home = () => {
       supraorbital: supraorbitalUrl
     });
 
-    // const res = {
-    //   data: {
-    //     gender: "1",
-    //     score_0: 0.9,
-    //     score_1: -0.1
-    //   }
-    // }
     setLoading(false);
 
-    const gender = res.data.gender === "1" ? "F" : "M"
+    const gender = res.data.gender === 0 ? "F" : "M"
     const positive_score = res.data.score_0
     const negative_score = res.data.score_1
 
