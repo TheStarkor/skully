@@ -40,19 +40,19 @@ const Home = () => {
   const inference = async () => {
     setLoading(true);
     // TODO: 실제 배포 시에는 서버랑 연결
-    // const res = await axios.post('https://9c95-143-248-107-187.ngrok.io/estimation', {
-    //   mastoid: mastoidUrl,
-    //   glabella: glabellaUrl,
-    //   supraorbital: supraorbitalUrl
-    // });
+    const res = await axios.post('https://4658-143-248-107-187.jp.ngrok.io/estimation', {
+      mastoid: mastoidUrl,
+      glabella: glabellaUrl,
+      supraorbital: supraorbitalUrl
+    });
 
-    const res = {
-      data: {
-        gender: "1",
-        score_0: 0.9,
-        score_1: -0.1
-      }
-    }
+    // const res = {
+    //   data: {
+    //     gender: "1",
+    //     score_0: 0.9,
+    //     score_1: -0.1
+    //   }
+    // }
     setLoading(false);
 
     const gender = res.data.gender === "1" ? "F" : "M"

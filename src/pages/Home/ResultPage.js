@@ -3,6 +3,7 @@ import Chart from 'react-apexcharts'
 
 import "./index.css"
 
+
 const getOptions = (titleText) => ({
   chart: {
     type: 'bar',
