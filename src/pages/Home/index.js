@@ -113,7 +113,7 @@ const Home = () => {
                 className="avatar-uploader"
                 showUploadList={false}
                 action={
-                  "https://api.onebob.co/uploads"
+                  "http://ec2-13-125-111-9.ap-northeast-2.compute.amazonaws.com/uploads"
                 }
                 onChange={handleMastoidChange}
               >
@@ -129,8 +129,8 @@ const Home = () => {
 
         </div>
             {/* <img src={"https://tmi-image.s3.ap-northeast-2.amazonaws.com/profile/1655562218502skull-ear.png"} alt="avatar" style={{ width: "102px" }} /> */}
-            
-            
+
+
 
         <div className="skullPart">
           <div className="example">
@@ -144,7 +144,7 @@ const Home = () => {
                 className="avatar-uploader"
                 showUploadList={false}
                 action={
-                  "https://api.onebob.co/uploads"
+                  "http://ec2-13-125-111-9.ap-northeast-2.compute.amazonaws.com/uploads"
                 }
                 onChange={handleGlabellaChange}
               >
