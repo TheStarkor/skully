@@ -40,7 +40,7 @@ const Home = () => {
   const inference = async () => {
     setLoading(true);
     // TODO: 실제 배포 시에는 서버랑 연결
-    const res = await axios.post('https://4658-143-248-107-187.jp.ngrok.io/estimation', {
+    const res = await axios.post('https://1f4c-143-248-107-187.jp.ngrok.io/estimation', {
       mastoid: mastoidUrl,
       glabella: glabellaUrl,
       supraorbital: supraorbitalUrl
