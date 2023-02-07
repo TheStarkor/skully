@@ -173,7 +173,7 @@ const Home = () => {
                 className="avatar-uploader"
                 showUploadList={false}
                 action={
-                  "https://api.onebob.co/uploads"
+                  "http://ec2-13-125-111-9.ap-northeast-2.compute.amazonaws.com/uploads"
                 }
                 onChange={handleSupraorbitalChange}
               >
