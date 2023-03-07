@@ -16,6 +16,7 @@ const Home = () => {
   const [supraorbitalUrl, setSupraorbitalUrl] = useState("");
   const [inferMessage, setInferMessage] = useState("");
   const [isLoading, setLoading] = useState(false);
+  const [statusMessage, setStatusMessage] = useState("");  
 
   const [series, setSeries] = useState(
     [{
@@ -37,8 +38,20 @@ const Home = () => {
     isUploaded(false);
   }
 
+  // METHOD. "성별추정" 버튼을 누르면 실행되는 프로세스. 
   const inference = async () => {
-    setLoading(true);
+    // 세 부위 사진이 모두 설정되었는지 체크해서, 하나라도 비어있으면 에러메시지를 statusMessage에 보여주고 abort
+    if (mastoidUrl!="" && glabellaUrl!="" && supraorbitalUrl!="") {
+      // 업로드 완료; 진행해도 좋음 
+    } else {
+      setStatusMessage("세 부위의 사진이 모두 업로드되어 있지 않습니다. 확인해주세요.");
+      return;
+    }
+
+
+    // END OF 사진 업로드 체크 
+
+    setLoading(true); // 버튼에 똥글뱅이 애니메이션 보여줄지 말지 결정. 
     // TODO: 실제 배포 시에는 서버랑 연결
     const res = await axios.post('https://1f4c-143-248-107-187.jp.ngrok.io/estimation', {
       mastoid: mastoidUrl,
@@ -191,6 +204,11 @@ const Home = () => {
         <Button type="primary" className="butPred" onClick={inference} loading={isLoading}>
           성별 추정
         </Button>
+
+        {/* statusMessage는 "성별 추정" 버튼을 눌렀을 때 서버 에러 메시지를 표시해주는 부분 */}
+        <p id="statusMessage">
+            {statusMessage}
+        </p>
       </>
     )
   }
