@@ -45,7 +45,12 @@ const Home = () => {
       // 업로드 완료; 진행해도 좋음 
       setStatusMessage("성별 추정 시작함")
     } else {
-      setStatusMessage("세 부위의 사진이 모두 업로드한 후 성별 추정 버튼을 눌러주세요");
+      let msg = "";
+      if(mastoidUrl=="") msg += "MASTOID, ";
+      if(glabellaUrl=="") msg += "GLABELLA, ";
+      if(supraorbitalUrl=="") msg += "SUPRAORBITAL ";
+      msg += "사진을 마저 등록한 후 성별추정 버튼을 눌러주세요";
+      setStatusMessage(msg);
       return;
     }
 
@@ -54,7 +59,7 @@ const Home = () => {
 
     setLoading(true); // 버튼에 똥글뱅이 애니메이션 보여줄지 말지 결정. 
     // TODO: 실제 배포 시에는 서버랑 연결
-    const res = await axios.post('https://1f4c-143-248-107-187.jp.ngrok.io/estimation', {
+    const res = await axios.post('https://0ea0-143-248-107-187.jp.ngrok.io/estimation', {
       mastoid: mastoidUrl,
       glabella: glabellaUrl,
       supraorbital: supraorbitalUrl
