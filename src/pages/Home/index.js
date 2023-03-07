@@ -99,7 +99,7 @@ const Home = () => {
         <div className="skully_logo">
           SKULLY
         </div>
-        <h1>성별 추정이 필요한 머리뼈의 사진 세 장을 예시의 구도를 참고하여 촬영해 주세요</h1>
+        <h1>성별 추정이 필요한 머리뼈의 사진 세 장을 예시의 구도를 참고하여 모두 촬영해 주세요</h1>
 
         <div className="skullPart">
           <div className="example">
