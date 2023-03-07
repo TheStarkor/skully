@@ -119,3 +119,9 @@ img.uploaded {
   fill:white !important;
   font-size:18px !important;
 }
+
+p#statusMessage {
+  margin:10px;
+  color:white;
+  font-size:18px;
+}

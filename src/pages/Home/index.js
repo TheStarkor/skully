@@ -43,8 +43,9 @@ const Home = () => {
     // 세 부위 사진이 모두 설정되었는지 체크해서, 하나라도 비어있으면 에러메시지를 statusMessage에 보여주고 abort
     if (mastoidUrl!="" && glabellaUrl!="" && supraorbitalUrl!="") {
       // 업로드 완료; 진행해도 좋음 
+      setStatusMessage("성별 추정 시작함")
     } else {
-      setStatusMessage("세 부위의 사진이 모두 업로드되어 있지 않습니다. 확인해주세요.");
+      setStatusMessage("세 부위의 사진이 모두 업로드한 후 성별 추정 버튼을 눌러주세요");
       return;
     }
 
