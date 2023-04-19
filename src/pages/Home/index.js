@@ -11,6 +11,9 @@ import ResultPage from "./ResultPage";
 const Home = () => {
   const [isInfer, setInfer] = useState(false);
   const [isUploaded, setUpload] = useState(false);
+  const [mastoid, setMastoid] = useState(null);
+  const [glabella, setGlabella] = useState(null);
+  const [supraorbital, setSupraorbital] = useState(null);
   const [mastoidUrl, setMastoidUrl] = useState("");
   const [glabellaUrl, setGlabellaUrl] = useState("");
   const [supraorbitalUrl, setSupraorbitalUrl] = useState("");
@@ -58,12 +61,13 @@ const Home = () => {
     // END OF 사진 업로드 체크 
 
     setLoading(true); // 버튼에 똥글뱅이 애니메이션 보여줄지 말지 결정. 
-    // TODO: 실제 배포 시에는 서버랑 연결
-    const res = await axios.post('https://0ea0-143-248-107-187.jp.ngrok.io/estimation', {
-      mastoid: mastoidUrl,
-      glabella: glabellaUrl,
-      supraorbital: supraorbitalUrl
-    });
+	  
+	  const images = new FormData()
+	  images.append('mastoid', mastoid, 'mastoid.png')
+	  images.append('glabella', glabella, 'glabella.png')
+	  images.append('supraorbital', supraorbital, 'supraorbital.png')
+// 	  TODO: 알맞게 서버랑 연결하기
+    const res = await axios.post('https://skully-api.run.goorm.site/estimation', images);
 
     setLoading(false);
 
@@ -95,22 +99,28 @@ const Home = () => {
   }
 
   const handleMastoidChange = (info) => {
-    if (info.file.response) {
-      setMastoidUrl(info.file.response.uri);
-    }
+	  const blob = new Blob([info.file.originFileObj])
+	  setMastoid(blob)
+	setMastoidUrl(URL.createObjectURL(blob))
   };
 
   const handleGlabellaChange = (info) => {
-    if (info.file.response) {
-      setGlabellaUrl(info.file.response.uri);
-    }
+	  	  const blob = new Blob([info.file.originFileObj])
+	  setGlabella(blob)
+  	setGlabellaUrl(URL.createObjectURL(info.file.originFileObj));
   };
 
   const handleSupraorbitalChange = (info) => {
-    if (info.file.response) {
-      setSupraorbitalUrl(info.file.response.uri);
-    }
+	  	  const blob = new Blob([info.file.originFileObj])
+	  setSupraorbital(blob)
+    setSupraorbitalUrl(URL.createObjectURL(info.file.originFileObj));
   };
+	
+	const dummyRequest = async ({ file, onSuccess }) => {    
+   setTimeout(() => {
+      onSuccess("ok");
+   }, 0);
+ }
 
   const StartPage = () => {
     return (
@@ -131,9 +141,7 @@ const Home = () => {
                 listType="picture-card"
                 className="avatar-uploader"
                 showUploadList={false}
-                action={
-                  "http://ec2-13-125-111-9.ap-northeast-2.compute.amazonaws.com/uploads"
-                }
+				customRequest={dummyRequest}
                 onChange={handleMastoidChange}
               >
                 {mastoidUrl ? (
@@ -162,9 +170,7 @@ const Home = () => {
                 listType="picture-card"
                 className="avatar-uploader"
                 showUploadList={false}
-                action={
-                  "http://ec2-13-125-111-9.ap-northeast-2.compute.amazonaws.com/uploads"
-                }
+                customRequest={dummyRequest}
                 onChange={handleGlabellaChange}
               >
                 {glabellaUrl ? (
@@ -191,9 +197,7 @@ const Home = () => {
                 listType="picture-card"
                 className="avatar-uploader"
                 showUploadList={false}
-                action={
-                  "http://ec2-13-125-111-9.ap-northeast-2.compute.amazonaws.com/uploads"
-                }
+                customRequest={dummyRequest}
                 onChange={handleSupraorbitalChange}
               >
                 {supraorbitalUrl ? (
